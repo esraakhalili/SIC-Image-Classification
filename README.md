@@ -52,6 +52,8 @@ To run the project:
    SIC/data/val/dog/
    SIC/data/val/bird/
 
+Download YOLOv8 weights from: https://1drv.ms/u/c/f62b56aaaf734aa0/EZlRle4G5mRNhjJKjGyW1I4BxJgnvZPjrGb60jwk8lW4IA?e=rmHZxL
+Place the file in: SIC/yolov8n-cls.pt
 
 ## Installation
 
