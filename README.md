@@ -39,7 +39,7 @@ The full dataset is not included in this repository due to size.
 To run the project:
 
 1. Download the dataset from this link: 
-   [Download data.zip](PASTE_YOUR_ONEDRIVE_LINK_HERE)
+   [Download data.zip](https://1drv.ms/u/c/f62b56aaaf734aa0/EXEiF17_VpRDvmyzzYUqbloByH5GdvHa4jpRq2WOOUPXgg?e=4UtUKN)
 
 2. Extract the zip and place the `data/` folder in the root of the SIC project:
    SIC/data/
