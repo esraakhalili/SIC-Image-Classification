@@ -32,6 +32,27 @@ SIC/
 └── README.md               # This file
 ```
 
+
+## Dataset Instructions
+
+The full dataset is not included in this repository due to size. 
+To run the project:
+
+1. Download the dataset from this link: 
+   [Download data.zip](PASTE_YOUR_ONEDRIVE_LINK_HERE)
+
+2. Extract the zip and place the `data/` folder in the root of the SIC project:
+   SIC/data/
+
+3. Ensure the folder structure is:
+   SIC/data/train/cat/
+   SIC/data/train/dog/
+   SIC/data/train/bird/
+   SIC/data/val/cat/
+   SIC/data/val/dog/
+   SIC/data/val/bird/
+
+
 ## Installation
 
 1. Clone or navigate to the project directory:
