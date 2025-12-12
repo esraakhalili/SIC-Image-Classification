@@ -243,6 +243,7 @@ class TrainingTab(QWidget):
         progress_layout.addWidget(self.progress_bar)
         
         self.status_label = QLabel("Ready to train")
+        self.status_label.setStyleSheet("color: #4CAF50; font-weight: bold; padding: 5px;")
         progress_layout.addWidget(self.status_label)
         
         self.log_text = QTextEdit()
@@ -458,6 +459,7 @@ class InferenceTab(QWidget):
         self.conf_slider.setRange(0, 100)
         self.conf_slider.setValue(25)
         self.conf_value_label = QLabel("0.25")
+        self.conf_value_label.setStyleSheet("color: #4CAF50; font-weight: bold; min-width: 50px;")
         self.conf_slider.valueChanged.connect(
             lambda v: self.conf_value_label.setText(f"{v/100:.2f}")
         )
@@ -480,7 +482,12 @@ class InferenceTab(QWidget):
         self.preview_label = QLabel("No image selected")
         self.preview_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.preview_label.setMinimumSize(400, 400)
-        self.preview_label.setStyleSheet("border: 2px solid #ccc; background-color: #f0f0f0;")
+        self.preview_label.setStyleSheet("""
+            border: 2px solid #555;
+            background-color: #2b2b2b;
+            color: #888;
+            font-size: 14px;
+        """)
         preview_layout.addWidget(self.preview_label)
         preview_group.setLayout(preview_layout)
         
@@ -912,6 +919,7 @@ class MainWindow(QMainWindow):
         title_font.setBold(True)
         title_label.setFont(title_font)
         title_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        title_label.setStyleSheet("color: #4CAF50; padding: 10px;")
         layout.addWidget(title_label)
         
         # Tab widget
@@ -930,64 +938,220 @@ class MainWindow(QMainWindow):
         layout.addWidget(self.tabs)
         
         # Status bar
+        self.statusBar().setStyleSheet("""
+            QStatusBar {
+                background-color: #2b2b2b;
+                color: #e0e0e0;
+                border-top: 1px solid #555;
+            }
+            QStatusBar::item {
+                border: none;
+            }
+        """)
         self.statusBar().showMessage("Ready")
     
     def apply_styles(self):
-        """Apply professional styling."""
+        """Apply professional styling with improved contrast and aesthetics."""
         self.setStyleSheet("""
             QMainWindow {
-                background-color: #f5f5f5;
+                background-color: #2b2b2b;
+            }
+            QWidget {
+                background-color: #2b2b2b;
+                color: #e0e0e0;
             }
             QTabWidget::pane {
-                border: 1px solid #ddd;
-                background-color: white;
-                border-radius: 4px;
+                border: 1px solid #555;
+                background-color: #3a3a3a;
+                border-radius: 6px;
             }
             QTabBar::tab {
-                background-color: #e0e0e0;
-                color: #333;
-                padding: 10px 20px;
-                margin-right: 2px;
-                border-top-left-radius: 4px;
-                border-top-right-radius: 4px;
+                background-color: #404040;
+                color: #b0b0b0;
+                padding: 12px 24px;
+                margin-right: 3px;
+                border-top-left-radius: 6px;
+                border-top-right-radius: 6px;
+                border: 1px solid #555;
             }
             QTabBar::tab:selected {
-                background-color: white;
-                color: #2196F3;
+                background-color: #3a3a3a;
+                color: #4CAF50;
                 font-weight: bold;
+                border-bottom: 2px solid #4CAF50;
             }
             QTabBar::tab:hover {
-                background-color: #f0f0f0;
+                background-color: #4a4a4a;
+                color: #ffffff;
             }
             QGroupBox {
                 font-weight: bold;
-                border: 2px solid #ddd;
-                border-radius: 5px;
-                margin-top: 10px;
-                padding-top: 10px;
+                border: 2px solid #555;
+                border-radius: 6px;
+                margin-top: 12px;
+                padding-top: 12px;
+                background-color: #3a3a3a;
+                color: #e0e0e0;
             }
             QGroupBox::title {
                 subcontrol-origin: margin;
-                left: 10px;
-                padding: 0 5px;
+                left: 12px;
+                padding: 0 8px;
+                color: #4CAF50;
             }
             QLineEdit, QSpinBox, QDoubleSpinBox, QComboBox {
-                padding: 5px;
-                border: 1px solid #ccc;
-                border-radius: 3px;
-                background-color: white;
+                padding: 8px;
+                border: 2px solid #555;
+                border-radius: 4px;
+                background-color: #2b2b2b;
+                color: #e0e0e0;
+                selection-background-color: #4CAF50;
+                selection-color: #ffffff;
             }
             QLineEdit:focus, QSpinBox:focus, QDoubleSpinBox:focus, QComboBox:focus {
-                border: 2px solid #2196F3;
+                border: 2px solid #4CAF50;
+                background-color: #333333;
+            }
+            QComboBox::drop-down {
+                border: none;
+                background-color: #404040;
+            }
+            QComboBox::down-arrow {
+                image: none;
+                border-left: 4px solid transparent;
+                border-right: 4px solid transparent;
+                border-top: 6px solid #b0b0b0;
+                margin-right: 8px;
+            }
+            QComboBox QAbstractItemView {
+                background-color: #3a3a3a;
+                border: 2px solid #555;
+                selection-background-color: #4CAF50;
+                selection-color: #ffffff;
+                color: #e0e0e0;
             }
             QTextEdit {
-                border: 1px solid #ccc;
-                border-radius: 3px;
-                background-color: white;
+                border: 2px solid #555;
+                border-radius: 4px;
+                background-color: #2b2b2b;
+                color: #e0e0e0;
                 font-family: 'Courier New', monospace;
+                padding: 8px;
             }
             QLabel {
-                color: #333;
+                color: #e0e0e0;
+            }
+            QPushButton {
+                background-color: #404040;
+                color: #e0e0e0;
+                border: 2px solid #555;
+                border-radius: 5px;
+                padding: 8px 16px;
+                font-weight: 500;
+            }
+            QPushButton:hover {
+                background-color: #4a4a4a;
+                border-color: #666;
+            }
+            QPushButton:pressed {
+                background-color: #353535;
+            }
+            QPushButton:disabled {
+                background-color: #2b2b2b;
+                color: #666;
+                border-color: #444;
+            }
+            QCheckBox {
+                color: #e0e0e0;
+                spacing: 8px;
+            }
+            QCheckBox::indicator {
+                width: 18px;
+                height: 18px;
+                border: 2px solid #555;
+                border-radius: 3px;
+                background-color: #2b2b2b;
+            }
+            QCheckBox::indicator:hover {
+                border-color: #4CAF50;
+            }
+            QCheckBox::indicator:checked {
+                background-color: #4CAF50;
+                border-color: #4CAF50;
+            }
+            QProgressBar {
+                border: 2px solid #555;
+                border-radius: 4px;
+                text-align: center;
+                background-color: #2b2b2b;
+                color: #e0e0e0;
+                height: 24px;
+            }
+            QProgressBar::chunk {
+                background-color: #4CAF50;
+                border-radius: 2px;
+            }
+            QSlider::groove:horizontal {
+                border: 1px solid #555;
+                height: 8px;
+                background: #2b2b2b;
+                border-radius: 4px;
+            }
+            QSlider::handle:horizontal {
+                background: #4CAF50;
+                border: 2px solid #555;
+                width: 18px;
+                margin: -4px 0;
+                border-radius: 9px;
+            }
+            QSlider::handle:horizontal:hover {
+                background: #66BB6A;
+            }
+            QScrollBar:vertical {
+                border: none;
+                background: #2b2b2b;
+                width: 12px;
+                margin: 0;
+            }
+            QScrollBar::handle:vertical {
+                background: #555;
+                min-height: 20px;
+                border-radius: 6px;
+            }
+            QScrollBar::handle:vertical:hover {
+                background: #666;
+            }
+            QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+                height: 0px;
+            }
+            QScrollBar:horizontal {
+                border: none;
+                background: #2b2b2b;
+                height: 12px;
+                margin: 0;
+            }
+            QScrollBar::handle:horizontal {
+                background: #555;
+                min-width: 20px;
+                border-radius: 6px;
+            }
+            QScrollBar::handle:horizontal:hover {
+                background: #666;
+            }
+            QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+                width: 0px;
+            }
+            QSplitter::handle {
+                background-color: #555;
+            }
+            QSplitter::handle:horizontal {
+                width: 3px;
+            }
+            QSplitter::handle:vertical {
+                height: 3px;
+            }
+            QSplitter::handle:hover {
+                background-color: #666;
             }
         """)
 
