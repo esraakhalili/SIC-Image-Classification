@@ -4,15 +4,15 @@ A production-grade, modular Python software suite for Image Classification using
 
 ## Features
 
-- **Professional GUI**: Modern, interactive PyQt6-based GUI with 8K/High DPI support
+- **Professional GUI**: Modern dark-themed PyQt6-based GUI with high-contrast design for optimal legibility and High DPI support
 - **Modular Architecture**: Clean separation of concerns with dedicated modules for training, inference, and export
 - **Production-Ready**: Proper logging, error handling, type hints, CLI and GUI interfaces
 - **Flexible Training**: Configurable training parameters with checkpointing and early stopping
-- **Real-Time Monitoring**: Live training progress, loss curves, and validation metrics in GUI
-- **Multiple Inference Modes**: Support for single images, image folders, videos, and live streams
-- **Interactive Preview**: Image preview with prediction overlays and detailed results
-- **Model Export**: Export to ONNX, TorchScript, CoreML, and other formats
-- **Automatic Device Detection**: Seamless CUDA/CPU handling
+- **Real-Time Monitoring**: Live training progress, loss curves, and validation metrics in GUI with color-coded status indicators
+- **Multiple Inference Modes**: Support for single images, image folders, videos (planned), and live streams (planned)
+- **Side-by-Side Results**: Image preview panel alongside detailed prediction results with Top-1 and Top-5 classifications
+- **Model Export**: Export to ONNX, TorchScript, CoreML, and other formats with configurable options
+- **Automatic Device Detection**: Seamless CUDA/CPU handling with manual override options
 
 ## Directory Structure
 
@@ -32,29 +32,6 @@ SIC/
 └── README.md               # This file
 ```
 
-
-## Dataset Instructions
-
-The full dataset is not included in this repository due to size. 
-To run the project:
-
-1. Download the dataset from this link: 
-   [Download data.zip](https://1drv.ms/u/c/f62b56aaaf734aa0/EXEiF17_VpRDvmyzzYUqbloByH5GdvHa4jpRq2WOOUPXgg?e=4UtUKN)
-
-2. Extract the zip and place the `data/` folder in the root of the SIC project:
-   SIC/data/
-
-3. Ensure the folder structure is:
-   SIC/data/train/cat/
-   SIC/data/train/dog/
-   SIC/data/train/bird/
-   SIC/data/val/cat/
-   SIC/data/val/dog/
-   SIC/data/val/bird/
-
-Download YOLOv8 weights from: https://1drv.ms/u/c/f62b56aaaf734aa0/EZlRle4G5mRNhjJKjGyW1I4BxJgnvZPjrGb60jwk8lW4IA?e=rmHZxL
-Place the file in: SIC/yolov8n-cls.pt
-
 ## Installation
 
 1. Clone or navigate to the project directory:
@@ -69,7 +46,13 @@ pip install -r requirements.txt
 
 ## GUI Application
 
-The suite includes a professional-grade GUI application with 8K/High DPI support:
+The suite includes a professional-grade GUI application featuring a modern dark theme with high-contrast design for improved legibility and 8K/High DPI support:
+
+### Visual Design:
+- **Dark Theme**: Charcoal background (#2b2b2b) with light text (#e0e0e0) for reduced eye strain
+- **Green Accents**: Strategic use of green (#4CAF50) for selected elements, progress indicators, and status highlights
+- **High Contrast**: Optimized color scheme ensures excellent readability in all lighting conditions
+- **Modern UI Elements**: Rounded corners, smooth transitions, and intuitive visual feedback
 
 ### Launch GUI:
 ```bash
@@ -81,25 +64,48 @@ python gui_app.py
 ### GUI Features:
 
 **Training Tab:**
-- Model selection (yolov8n-cls.pt through yolov8x-cls.pt)
-- Dataset path browser
-- Training parameter configuration (epochs, batch size, learning rate, etc.)
-- Real-time training progress with live updates
-- Training logs and status messages
-- Device selection (auto, CPU, CUDA)
+- **Model Configuration**: Selection from yolov8n-cls.pt through yolov8x-cls.pt variants
+- **Dataset Browser**: Easy-to-use file browser for selecting dataset directories
+- **Training Parameters**: Comprehensive configuration including:
+  - Epochs (1-10000)
+  - Batch size (1-256)
+  - Image size (32-1024, typically 224)
+  - Learning rate (0.0001-1.0)
+  - Workers, patience, and more
+- **Device Selection**: Auto-detection or manual selection (auto, CPU, CUDA, specific GPU)
+- **Pretrained Weights**: Toggle for using ImageNet pretrained weights
+- **Project Settings**: Customizable project and run names for organization
+- **Real-Time Progress**: 
+  - Visual progress bar with green accent
+  - Live epoch and metrics display (loss, validation accuracy)
+  - Color-coded status labels
+  - Scrollable training log output
+- **Control Buttons**: Start (green) and Stop (red) buttons with hover effects
 
 **Inference Tab:**
-- Model loading and selection
-- Multiple input sources (Image, Folder, Video, Webcam)
-- Interactive image preview
-- Confidence threshold slider
-- Detailed prediction results (Top-1 and Top-5)
-- Batch folder prediction with summary statistics
+- **Model Loading**: Browse and load trained model files (.pt)
+- **Input Sources**: 
+  - Single image file prediction
+  - Batch folder prediction with summary statistics
+  - Video file support (placeholder - coming soon)
+  - Webcam stream support (placeholder - coming soon)
+- **Interactive Preview**: Side-by-side layout with image preview panel
+- **Confidence Threshold**: Adjustable slider (0.0-1.0) with real-time value display
+- **Save Options**: Checkbox to save prediction visualizations
+- **Detailed Results**: 
+  - Top-1 prediction with confidence percentage
+  - Top-5 predictions with confidence scores
+  - For folders: Class distribution summary and detailed per-image results
 
 **Export Tab:**
-- Model export to ONNX, TorchScript, CoreML
-- Export configuration (image size, FP16 quantization, simplification)
-- Export status and progress tracking
+- **Model Selection**: Browse and select model files for export
+- **Export Formats**: ONNX, TorchScript, CoreML
+- **Export Configuration**: 
+  - Output path specification (auto-suggested based on format)
+  - Image size configuration
+  - FP16 quantization option (half-precision for smaller models)
+  - ONNX simplification option
+- **Export Status**: Real-time status messages and completion notifications with file size information
 
 ## Dataset Structure for YOLOv8 Classification
 
@@ -320,10 +326,16 @@ runs/classify/
 
 - Python 3.8+
 - PyTorch 2.0+
+- PyQt6 (for GUI application)
 - CUDA (optional, for GPU acceleration)
 - See `requirements.txt` for full list
+
+## Documentation
+
+- **[GUI Guide](GUI_GUIDE.md)**: Comprehensive guide to using the GUI application
+- **[Quick Start Guide](QUICKSTART.md)**: Get started quickly with examples
+- **[Directory Structure](DIRECTORY_STRUCTURE.md)**: Project organization details
 
 ## License
 
 This project is provided as-is for educational and production use.
-
