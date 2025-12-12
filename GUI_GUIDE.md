@@ -5,9 +5,9 @@
 The YOLOv8 Classification Suite includes a professional-grade GUI application built with PyQt6, featuring:
 
 - **8K/High DPI Support**: Fully scalable interface for high-resolution displays
-- **Modern Design**: Clean, professional interface with intuitive navigation
-- **Real-Time Updates**: Live training progress and inference results
-- **Interactive Preview**: Image preview with prediction overlays
+- **Modern Dark Theme**: High-contrast charcoal background with green accents for legibility
+- **Real-Time Updates**: Live training progress, status, and logs
+- **Side-by-Side Results**: Image preview next to detailed prediction results
 
 ## Launching the GUI
 
@@ -52,10 +52,10 @@ The GUI consists of three main tabs:
 - **Run Name**: Specific name for this training run
 
 **Training Progress:**
-- Real-time progress bar
+- Real-time progress bar with high-contrast styling
 - Current epoch and metrics display
-- Training log output
-- Start/Stop controls
+- Training log output (read-only)
+- Start/Stop controls with distinct colors for clarity
 
 **Usage:**
 1. Select model variant
@@ -74,15 +74,15 @@ The GUI consists of three main tabs:
 **Input Source:**
 - **Image**: Single image file prediction
 - **Folder**: Batch prediction on folder of images
-- **Video**: Video file prediction (coming soon)
-- **Webcam**: Live webcam stream (coming soon)
+- **Video**: Video file prediction (placeholder message shown; not yet implemented)
+- **Webcam**: Live webcam stream (placeholder message shown; not yet implemented)
 
 **Settings:**
 - **Confidence Threshold**: Adjustable slider (0.0-1.0)
 - **Save Predictions**: Option to save prediction visualizations
 
 **Results Display:**
-- **Preview Panel**: Shows input image with prediction overlay
+- **Preview Panel**: Shows input image alongside results
 - **Results Panel**: Detailed prediction results including:
   - Top-1 prediction with confidence
   - Top-5 predictions with confidence scores
@@ -207,4 +207,3 @@ Planned features:
 - Model comparison and benchmarking tools
 - Dataset visualization and statistics
 - Advanced augmentation preview
-
