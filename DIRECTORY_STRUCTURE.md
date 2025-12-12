@@ -53,4 +53,3 @@ SIC/
 └── predictions/              # (if saving predictions)
     └── pred_*.jpg
 ```
-
